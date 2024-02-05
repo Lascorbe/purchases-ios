@@ -64,8 +64,7 @@ struct Template4View: TemplateViewType {
                     VStack(spacing: 0) {
                         TemplateBackgroundImageView(configuration: self.configuration, ignoreSafeArea: false)
                             .scaledToFit()
-                            .frame(height: imageHeight)
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity, minHeight: imageHeight)
                             .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
