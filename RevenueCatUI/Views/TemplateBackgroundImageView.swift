@@ -21,9 +21,10 @@ struct TemplateBackgroundImageView: View {
     private let blurred: Bool
     private let ignoreSafeArea: Bool
 
-    init(configuration: TemplateViewConfiguration) {
+    init(configuration: TemplateViewConfiguration, ignoreSafeArea: Bool = true) {
         self.init(url: configuration.backgroundImageURLToDisplay,
-                  blurred: configuration.configuration.blurredBackgroundImage)
+                  blurred: configuration.configuration.blurredBackgroundImage,
+                  ignoreSafeArea: ignoreSafeArea)
     }
 
     init(url: URL?, blurred: Bool, ignoreSafeArea: Bool = true) {
