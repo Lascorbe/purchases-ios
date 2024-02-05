@@ -61,6 +61,7 @@ struct Template4View: TemplateViewType {
             #if canImport(UIKit)
             ZStack {
                 if !self.shouldUseLandscapeLayout {
+                    TemplateBackgroundImageView(url: configuration.backgroundImageURLToDisplay, blurred: true)
                     VStack(spacing: 0) {
                         TemplateBackgroundImageView(configuration: self.configuration, ignoreSafeArea: false)
                             .scaledToFit()
@@ -72,7 +73,7 @@ struct Template4View: TemplateViewType {
                 VStack(spacing: 0) {
                     Spacer()
                         .onHeightChange { height in
-                            imageHeight = height + Self.cornerRadius + 5
+                            imageHeight = height + Self.cornerRadius + 20
                         }
                     self.footerContent
                         .background(self.configuration.colors.backgroundColor)
