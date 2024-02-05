@@ -57,21 +57,18 @@ struct Template4View: TemplateViewType {
         switch self.configuration.mode {
         case .fullScreen:
             #if canImport(UIKit)
-            ZStack {
+            VStack(spacing: 0) {
                 if !self.shouldUseLandscapeLayout {
-                    VStack(spacing: 0) {
-                        TemplateBackgroundImageView(configuration: self.configuration)
-                        Spacer()
-                    }
-                }
-                VStack(spacing: 0) {
+                    TemplateBackgroundImageView(configuration: self.configuration)
+                        .padding(.bottom, -(Self.cornerRadius + 5))
+                } else {
                     Spacer()
-                    self.footerContent
-                        .background(self.configuration.colors.backgroundColor)
-                        .roundedCorner(Self.cornerRadius,
-                                       corners: [.topLeft, .topRight],
-                                       edgesIgnoringSafeArea: .bottom)
                 }
+                self.footerContent
+                    .background(self.configuration.colors.backgroundColor)
+                    .roundedCorner(Self.cornerRadius,
+                                   corners: [.topLeft, .topRight],
+                                   edgesIgnoringSafeArea: .bottom)
             }
             #else
             ZStack {
