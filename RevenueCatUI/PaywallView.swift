@@ -363,9 +363,9 @@ struct LoadedOfferingPaywallView: View {
                 self.dismiss()
             } label: {
                 Image(systemName: "xmark")
-                    .padding()
-                    .clipShape(Circle())
+                    .padding(2)
                     .background(.ultraThinMaterial)
+                    .clipShape(Circle())
             }
             .disabled(self.purchaseHandler.actionInProgress)
             .opacity(

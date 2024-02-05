@@ -61,7 +61,6 @@ struct Template4View: TemplateViewType {
             #if canImport(UIKit)
             ZStack {
                 if !self.shouldUseLandscapeLayout {
-                    TemplateBackgroundImageView(url: configuration.backgroundImageURLToDisplay, blurred: true)
                     VStack(spacing: 0) {
                         TemplateBackgroundImageView(configuration: self.configuration, ignoreSafeArea: false)
                             .scaledToFit()
@@ -69,6 +68,9 @@ struct Template4View: TemplateViewType {
                             .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
+                    .background(
+                        TemplateBackgroundImageView(url: configuration.backgroundImageURLToDisplay, blurred: true)
+                    )
                 }
                 VStack(spacing: 0) {
                     Spacer()
