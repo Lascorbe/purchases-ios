@@ -60,7 +60,7 @@ struct Template4View: TemplateViewType {
             ZStack {
                 if !self.shouldUseLandscapeLayout {
                     VStack(spacing: 0) {
-                        TemplateBackgroundImageView(configuration: self.configuration, ignoreSafeArea: false)
+                        TemplateBackgroundImageView(configuration: self.configuration)
                         Spacer()
                     }
                 }
