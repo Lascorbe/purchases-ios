@@ -40,8 +40,8 @@ struct TemplateBackgroundImageView: View {
 
             if self.ignoreSafeArea {
                 image
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)
             } else {
                 image

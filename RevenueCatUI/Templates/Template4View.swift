@@ -25,6 +25,8 @@ struct Template4View: TemplateViewType {
     private var selectedPackage: TemplateViewConfiguration.Package
 
     @State
+    private var imageHeight: CGFloat = 200
+    @State
     private var packageContentHeight: CGFloat?
     @State
     private var containerWidth: CGFloat = 600
@@ -57,18 +59,28 @@ struct Template4View: TemplateViewType {
         switch self.configuration.mode {
         case .fullScreen:
             #if canImport(UIKit)
-            VStack(spacing: 0) {
+            ZStack {
                 if !self.shouldUseLandscapeLayout {
-                    TemplateBackgroundImageView(configuration: self.configuration)
-                        .padding(.bottom, -(Self.cornerRadius + 5))
-                } else {
-                    Spacer()
+                    VStack(spacing: 0) {
+                        TemplateBackgroundImageView(configuration: self.configuration, ignoreSafeArea: false)
+                            .scaledToFit()
+                            .frame(height: imageHeight)
+                            .frame(maxWidth: .infinity)
+                            .edgesIgnoringSafeArea(.all)
+                        Spacer()
+                    }
                 }
-                self.footerContent
-                    .background(self.configuration.colors.backgroundColor)
-                    .roundedCorner(Self.cornerRadius,
-                                   corners: [.topLeft, .topRight],
-                                   edgesIgnoringSafeArea: .bottom)
+                VStack(spacing: 0) {
+                    Spacer()
+                        .onHeightChange { height in
+                            imageHeight = height + Self.cornerRadius + 5
+                        }
+                    self.footerContent
+                        .background(self.configuration.colors.backgroundColor)
+                        .roundedCorner(Self.cornerRadius,
+                                       corners: [.topLeft, .topRight],
+                                       edgesIgnoringSafeArea: .bottom)
+                }
             }
             #else
             ZStack {
