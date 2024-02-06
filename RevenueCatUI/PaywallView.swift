@@ -363,7 +363,7 @@ struct LoadedOfferingPaywallView: View {
                 self.dismiss()
             } label: {
                 Image(systemName: "xmark")
-                    .padding(2)
+                    .padding(8)
                     .background(.ultraThinMaterial)
                     .clipShape(Circle())
             }
